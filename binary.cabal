@@ -37,10 +37,10 @@ library
                    Data.Binary.Put,
                    Data.Binary.Get,
                    Data.Binary.Get.Internal,
-                   Data.Binary.Builder
+                   Data.Binary.Builder,
+                   Data.Binary.Class
 
-  other-modules:   Data.Binary.Class,
-                   Data.Binary.Internal,
+  other-modules:   Data.Binary.Internal,
                    Data.Binary.Generic,
                    Data.Binary.FloatCast
   if impl(ghc <= 7.6)
@@ -59,13 +59,14 @@ library
 
 test-suite qc
   type:  exitcode-stdio-1.0
-  hs-source-dirs: src tests
+  hs-source-dirs: tests
   main-is: QC.hs
   other-modules:
     Action
     Arbitrary
   build-depends:
     base >= 4.5.0.0 && < 5,
+    binary,
     bytestring >= 0.10.4,
     random>=1.0.1.0,
     test-framework,
@@ -82,10 +83,11 @@ test-suite qc
 
 test-suite read-write-file
   type:  exitcode-stdio-1.0
-  hs-source-dirs: src tests
+  hs-source-dirs: tests
   main-is: File.hs
   build-depends:
     base >= 4.5.0.0 && < 5,
+    binary,
     bytestring >= 0.10.4,
     Cabal,
     directory,
